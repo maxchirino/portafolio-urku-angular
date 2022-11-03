@@ -34,7 +34,6 @@ export class InfoPaginaService {
       .subscribe((resp: any) => {
         // console.log(resp);
         this.equipo = resp;
-        console.log(this.equipo);
       });
   }
 }
