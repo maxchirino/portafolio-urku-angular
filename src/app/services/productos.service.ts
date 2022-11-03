@@ -8,6 +8,7 @@ import { Producto } from '../interfaces/producto.interface';
 export class ProductosService {
   cargando: boolean = true;
   productos: Producto[] = [];
+  productosFiltrado: Producto[] = [];
 
   constructor(private http: HttpClient) {
     this.cargarProductos();
@@ -23,5 +24,19 @@ export class ProductosService {
         this.productos = resp;
         this.cargando = false;
       });
+  }
+
+  getProducto(id: string) {
+    return this.http.get(
+      `https://portafolio-urku-angular-default-rtdb.firebaseio.com/productos/${id}.json`
+    );
+  }
+
+  buscarProducto(termino: string) {
+    this.productosFiltrado = this.productos.filter((p) => {
+      return true;
+    });
+
+    console.log(this.productosFiltrado);
   }
 }
